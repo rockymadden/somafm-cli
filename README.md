@@ -36,13 +36,20 @@ Core Commands:
   listen      Listen to channel
 ```
 
-## Examples
+## Examples and Recipes
 
 ### Listen to Groove Salad:
 
 ```bash
 $ somafm listen groovesalad
 A: 00:05:19 Cache: 10s+96k
+```
+
+### Listen to Groove Salad at highest quality:
+
+```bash
+$ somafm listen groovesalad --quality=highest
+A: 00:02:25 Cache: 9s+72k
 ```
 
 ## License
