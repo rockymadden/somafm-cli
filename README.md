@@ -19,7 +19,7 @@ SomaFM.com, LLC.
 ### Via Homebrew:
 
 ```bash
-$ brew tap rockymaaden/rockymadden
+$ brew tap rockymadden/rockymadden
 $ brew install somafm-cli
 ```
 
