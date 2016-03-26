@@ -28,7 +28,7 @@ $ brew install somafm-cli
 ```bash
 $ somafm --help
 Usage:
-  somafm channels
+  somafm channels [--mood=<state>]
   somafm listen <channel> [--quality=<low|high|highest>]
 
 Core Commands:
