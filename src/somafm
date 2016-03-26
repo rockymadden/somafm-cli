@@ -1,0 +1,125 @@
+#!/usr/bin/env bash
+
+bindir=
+
+## Command parsing ################################################################################
+cmd="${1}"; shift
+
+## Argument and option parsing ####################################################################
+while (( "$#" )); do
+  case "${1}" in
+    --channel=*) channel=${1/--channel=/''}; shift ;;
+    -c*) channel=${2}; shift; shift ;;
+    *)
+      case "${cmd}" in
+        listen) test -n "${1}" && test -z "${channel}" && channel=${1} ;;
+      esac
+      shift
+    ;;
+  esac
+done
+
+## Argument and option prompting ##################################################################
+case "${cmd}" in
+  listen) test -z "${channel}" && read -e -p 'Enter channel (e.g. groovesalad, poptron): ' channel ;;
+esac
+
+## Command functions ##############################################################################
+function channels() {
+  echo "bagel          | What alternative rock radio should sound like"
+  echo "beatblender    | A late night blend of deep-house and downtempo chill"
+  echo "blackrockfm    | From the Playa to the world, for the 2014 Burning Man festival"
+  echo "bootliquor     | Americana Roots music for Cowhands, Cowpokes and Cowtippers"
+  echo "cliqhop        | Blips'n'beeps backed mostly w/beats"
+  echo "covers         | Just covers. Songs you know by artists you don't"
+  echo "deepspaceone   | Deep ambient electronic, experimental and space music"
+  echo "defcon         | Music for Hacking"
+  echo "digitalis      | Digitally affected analog rock to calm the agitated heart"
+  echo "doomed         | Dark industrial/ambient music for tortured souls"
+  echo "dubstep        | Dubstep, Dub and Deep Bass"
+  echo "dronezone      | Served best chilled, safe with most medications"
+  echo "earwaves       | Spanning the history of electronic and experimental music"
+  echo "fluid          | Drown in the electronic sound of instrumental hiphop"
+  echo "folkdforward   | Indie Folk, Alt-folk and the occasional folk classics"
+  echo "groovesalad    | A nicely chilled plate of ambient/downtempo beats and grooves"
+  echo "illstreet      | Classic bachelor pad, playful exotica and vintage music"
+  echo "indiepop       | New and classic favorite indie pop tracks"
+  echo "leftcoast70s   | Mellow album rock from the Seventies"
+  echo "lush           | Sensuous and mellow vocals, mostly female"
+  echo "metaldetector  | From black to doom, prog to sludge, thrash to post"
+  echo "missioncontrol | Celebrating NASA and Space Explorers everywhere"
+  echo "poptron        | Electropop and indie dance rock with sparkle and pop"
+  echo "secretagent    | The soundtrack for your stylish, mysterious, dangerous life"
+  echo "seveninchsoul  | Vintage soul tracks from the original 45 RPM vinyl"
+  echo "sf1033         | Ambient music mixed with the sounds of San Francisco"
+  echo "sonicuniverse  | Transcending the world of jazz with eclectic, avant-garde"
+  echo "southbysoma    | Music from bands who will be performing at SXSW"
+  echo "spacestation   | Deep ambient electronic, experimental and space music"
+  echo "suburbsofgoa   | Desi-influenced Asian world beats and beyond"
+  echo "thetrip        | Progressive house / trance"
+  echo "thistle        | Exploring music from Celtic roots and branches"
+  echo "underground80s | Early 80s UK Synthpop and a bit of New Wave"
+}
+
+function help() {
+  local a=(${0//\// })
+  local bin=${a[${#a[@]}-1]}
+
+  echo 'Usage:'
+  echo "  ${bin} channels"
+  echo "  ${bin} listen <channel>"
+  echo
+  echo 'Core Commands:'
+  echo '  channels    List channels'
+  echo '  listen      Listen to channel'
+}
+
+function listen() {
+  local bagel='http://somafm.com/bagel.pls'
+  local beatblender='http://somafm.com/beatblender.pls'
+  local blackrockfm='http://somafm.com/brfm130.pls'
+  local bootliquor='http://somafm.com/bootliquor130.pls'
+  local cliqhop='http://somafm.com/cliqhop.pls'
+  local covers='http://somafm.com/covers.pls'
+  local deepspaceone='http://somafm.com/deepspaceone130.pls'
+  local defcon='http://somafm.com/defcon.pls'
+  local digitalis='http://somafm.com/digitalis130.pls'
+  local doomed='http://somafm.com/doomed.pls'
+  local dubstep='http://somafm.com/dubstep256.pls'
+  local dronezone='http://somafm.com/dronezone130.pls'
+  local earwaves='http://somafm.com/earwaves130.pls'
+  local fluid='http://somafm.com/fluid130.pls'
+  local folkforward='http://somafm.com/folkfwd.pls'
+  local groovesalad='http://somafm.com/groovesalad130.pls'
+  local illstreet='http://somafm.com/illstreet130.pls'
+  local indiepop='http://somafm.com/indiepop130.pls'
+  local leftcoast70s='http://somafm.com/seventies320.pls'
+  local lush='http://somafm.com/lush130.pls'
+  local metaldetector='http://somafm.com/metal130.pls'
+  local missioncontrol='http://somafm.com/missioncontrol.pls'
+  local poptron='http://somafm.com/poptron.pls'
+  local secretagent='http://somafm.com/secretagent130.pls'
+  local seveninchsoul='http://somafm.com/7soul130.pls'
+  local sf1033='http://somafm.com/sf1033.pls'
+  local sonicuniverse='http://somafm.com/sonicuniverse192.pls'
+  local southbysoma='https://somafm.com/sxfm.pls'
+  local spacestation='http://somafm.com/spacestation130.pls'
+  local suburbsofgoa='http://somafm.com/suburbsofgoa130.pls'
+  local thetrip='http://somafm.com/thetrip.pls'
+  local thistle='http://somafm.com/thistle.pls'
+  local underground80s='http://somafm.com/u80s130.pls'
+
+  mpv "${!channel}" 1> /dev/null
+}
+
+function version() {
+  echo 'v0.0.0'
+}
+
+## Command routing ################################################################################
+case "${cmd}" in
+  --help|-h) help; exit 0 ;;
+  --version|-v) version; exit 0 ;;
+  channels|listen) "${cmd}"; exit "$?" ;;
+  *) help; exit 1 ;;
+esac
