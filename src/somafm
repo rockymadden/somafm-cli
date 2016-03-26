@@ -47,7 +47,7 @@ function help() {
 
   echo 'Usage:'
   echo "  ${bin} channels"
-  echo "  ${bin} listen <channel> [--quality=[low|high|highest]]"
+  echo "  ${bin} listen <channel> [--quality=<low|high|highest>]"
   echo
   echo 'Core Commands:'
   echo '  channels    List channels'
