@@ -1,4 +1,4 @@
-# somafm-cli <sub><sup>| Powerful SomaFM CLI via pure bash</sup></sub>
+# somafm-cli <sub><sup>| Listen to SomaFM via your terminal</sup></sub>
 [![version](http://img.shields.io/badge/version-v0.0.0-blue.svg)](https://github.com/rockymadden/somafm-cli/releases)
 [![versioning](http://img.shields.io/badge/versioning-semver-blue.svg)](http://semver.org/)
 [![branching](http://img.shields.io/badge/branching-github%20flow-blue.svg)](https://guides.github.com/introduction/flow/)
@@ -7,12 +7,12 @@
 [![chat](http://img.shields.io/badge/chat-slack-blue.svg)](https://rockymadden-slack.herokuapp.com/)
 [![circleci](https://circleci.com/gh/rockymadden/somafm-cli.svg?style=shield)](https://circleci.com/gh/rockymadden/somafm-cli)
 
-Listen to [SomaFM](https://somafm.com/) via your terminal. Be sure to help keep SomaFM
-commercial-free and on the air with your [support](https://somafm.com/support/)! Groove Salad,
-Drone Zone, Cliqhop, Secret Agent, Space Station Soma, Digitalis, PopTron, Suburbs of Goa and
-Illinois Street Lounge are trademarks of SomaFM.com, LLC.
-
 ![example](http://share.rockymadden.com/1U1l1T27471R/Screen%20Recording%202016-03-25%20at%2011.59%20PM.gif)
+
+Be sure to help keep SomaFM commercial-free and on the air with your
+[support](https://somafm.com/support/)! Groove Salad, Drone Zone, Cliqhop, Secret Agent, Space
+Station Soma, Digitalis, PopTron, Suburbs of Goa and Illinois Street Lounge are trademarks of
+SomaFM.com, LLC.
 
 ## Installation
 
