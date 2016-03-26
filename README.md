@@ -1,5 +1,5 @@
 # somafm-cli <sub><sup>| Listen to SomaFM in your terminal via pure bash</sup></sub>
-[![version](http://img.shields.io/badge/version-v0.0.0-blue.svg)](https://github.com/rockymadden/somafm-cli/releases)
+[![version](http://img.shields.io/badge/version-v0.1.0-blue.svg)](https://github.com/rockymadden/somafm-cli/releases)
 [![versioning](http://img.shields.io/badge/versioning-semver-blue.svg)](http://semver.org/)
 [![branching](http://img.shields.io/badge/branching-github%20flow-blue.svg)](https://guides.github.com/introduction/flow/)
 [![license](http://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
