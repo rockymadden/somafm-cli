@@ -21,7 +21,7 @@ while (( "$#" )); do
   esac
 done
 
-## Implicit/default arguments and options #########################################################
+## Default arguments and options ##################################################################
 case "${cmd}" in
   listen) test -z "${quality}" && quality=high ;;
 esac
