@@ -29,7 +29,7 @@ $ brew install somafm-cli
 $ somafm --help
 Usage:
   somafm channels
-  somafm listen <channel> [--quality=[low|high|highest]]
+  somafm listen <channel> [--quality=<low|high|highest>]
 
 Core Commands:
   channels    List channels
