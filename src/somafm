@@ -59,7 +59,10 @@ function listen() {
     jq -r ".channels | map(select(.id == \"${channel}\")) | .[]" | \
     jq -r ".playlists | map(select(.quality == \"${quality}\")) | limit(1;.[]) | .url")
 
-  mpv "${playlist}" 1> /dev/null
+  case "${playlist}" in
+    '') return 1 ;;
+    *) mpv "${playlist}" 1> /dev/null ;;
+  esac
 }
 
 function version() {
