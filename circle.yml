@@ -8,3 +8,6 @@ test:
   override:
     - if [ -n "${TEST_UNIT}" ] && [ "${TEST_UNIT}" -eq 0 ]; then make test-unit; fi
     - if [ -n "${TEST_INTEGRATION}" ] && [ "${TEST_INTEGRATION}" -eq 0 ]; then make test-integration; fi
+
+  post:
+    - if [ -d ~/comsfm-cli/build/var/log ]; then mv ~/somafm-cli/build/var/log/* "${CIRCLE_ARTIFACTS}"; fi
