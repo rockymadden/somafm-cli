@@ -47,6 +47,45 @@ Core Commands:
 
 ## Examples and Recipes
 
+### List all channels:
+
+```bash
+$ somafm channels
+groovesalad | 1535 listeners | A nicely chilled plate of ambient/downtempo beats and grooves.
+dronezone | 682 listeners | Served best chilled, safe with most medications. Atmospheric textures with minimal beats.
+spacestation | 332 listeners | Tune in, turn on, space out. Spaced-out ambient and mid-tempo electronica.
+indiepop | 307 listeners | New and classic favorite indie pop tracks.
+lush | 283 listeners | Sensuous and mellow vocals, mostly female, with an electronic influence.
+secretagent | 237 listeners | The soundtrack for your stylish, mysterious, dangerous life. For Spies and PIs too!
+deepspaceone | 195 listeners | Deep ambient electronic, experimental and space music. For inner and outer space exploration.
+u80s | 154 listeners | Early 80s UK Synthpop and a bit of New Wave.
+bootliquor | 96 listeners | Americana Roots music for Cowhands, Cowpokes and Cowtippers
+beatblender | 92 listeners | A late night blend of deep-house and downtempo chill.
+poptron | 86 listeners | Electropop and indie dance rock with sparkle and pop.
+suburbsofgoa | 84 listeners | Desi-influenced Asian world beats and beyond.
+sonicuniverse | 83 listeners | Transcending the world of jazz with eclectic, avant-garde takes on tradition.
+seventies | 77 listeners | NEW! Mellow album rock from the Seventies. Yacht friendly.
+bagel | 73 listeners | What alternative rock radio should sound like.
+defcon | 72 listeners | Music for Hacking. The DEF CON Year-Round Channel.
+folkfwd | 70 listeners | Indie Folk, Alt-folk and the occasional folk classics.
+thetrip | 63 listeners | Progressive house / trance. Tip top tunes.
+illstreet | 59 listeners | Classic bachelor pad, playful exotica and vintage music of tomorrow.
+digitalis | 59 listeners | Digitally affected analog rock to calm the agitated heart.
+fluid | 58 listeners | NEW! Drown in the electronic sound of instrumental hiphop, future soul and liquid trap.
+thistle | 54 listeners | Exploring music from Celtic roots and branches
+missioncontrol | 53 listeners | Celebrating NASA and Space Explorers everywhere.
+dubstep | 48 listeners | Dubstep, Dub and Deep Bass. May damage speakers at high volume.
+cliqhop | 43 listeners | Blips'n'beeps backed mostly w/beats. Intelligent Dance Music.
+7soul | 39 listeners | Vintage soul tracks from the original 45 RPM vinyl.
+sf1033 | 30 listeners | Ambient music mixed with the sounds of San Francisco public safety radio traffic.
+earwaves | 23 listeners | Spanning the history of electronic and experimental music from the early pioneers to the latest innovators.
+brfm | 22 listeners | From the Playa to the world, back for the 2015 Burning Man festival.
+doomed | 22 listeners | Dark industrial/ambient music for tortured souls.
+covers | 18 listeners | Just covers. Songs you know by artists you don't. We've got you covered.
+metal | 14 listeners | NEW! From black to doom, prog to sludge, thrash to post, stoner to crossover, punk to industrial.
+sxfm | 5 listeners | Music from bands who will be performing at SXSW, one of the biggest and best music festivals in the world. [explicit]
+```
+
 ### Listen to Groove Salad:
 
 ```bash
