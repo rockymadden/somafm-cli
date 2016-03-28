@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-load lib/bats
+load ../bats
 
 @test '-h should output usage' {
   run build/bin/somafm -h
