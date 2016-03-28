@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-load bats
+load lib/bats
 
 @test '-v should output version' {
   run build/bin/somafm -v

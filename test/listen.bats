@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-load bats
+load lib/bats
 
 @test 'listen with invalid quality should exit 1' {
   run build/bin/somafm listen groovesalad --quality=invalid
