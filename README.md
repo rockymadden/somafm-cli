@@ -7,7 +7,7 @@
 [![chat](http://img.shields.io/badge/chat-slack-blue.svg)](https://rockymadden-slack.herokuapp.com/)
 [![circleci](https://circleci.com/gh/rockymadden/somafm-cli.svg?style=shield)](https://circleci.com/gh/rockymadden/somafm-cli)
 
-![example](http://share.rockymadden.com/1U1l1T27471R/Screen%20Recording%202016-03-25%20at%2011.59%20PM.gif)
+[![asciicast](https://asciinema.org/a/40541.png)](https://asciinema.org/a/40541)
 
 Be sure to help keep SomaFM commercial-free and on the air with your
 [support](https://somafm.com/support/)! Groove Salad, Drone Zone, Cliqhop, Secret Agent, Space
@@ -21,6 +21,15 @@ SomaFM.com, LLC.
 ```bash
 $ brew tap rockymadden/rockymadden
 $ brew install somafm-cli
+```
+
+### Via compiling from source:
+
+```bash
+$ git clone git@github.com:rockymadden/somafm-cli.git
+$ cd somafm-cli
+$ make
+$ make install
 ```
 
 ## Usage
