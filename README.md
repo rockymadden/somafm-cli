@@ -23,6 +23,15 @@ $ brew tap rockymadden/rockymadden
 $ brew install somafm-cli
 ```
 
+### Via compiling from source:
+
+```bash
+$ git clone git@github.com:rockymadden/somafm-cli.git
+$ cd somafm-cli
+$ make
+$ make install
+```
+
 ## Usage
 
 ```bash
