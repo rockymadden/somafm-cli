@@ -10,10 +10,8 @@ cmd="${1}"; shift
 while (( "$#" )); do
   case "${1}" in
     --channel=*) channel=${1/--channel=/''}; shift ;;
-    --mood=*) mood=${1/--mood=/''}; shift ;;
     --quality=*) quality=${1/--quality=/''}; shift ;;
     -c*) channel=${2}; shift; shift ;;
-    -m*) mood=${2}; shift; shift ;;
     -q*) quality=${2}; shift; shift ;;
     *)
       case "${cmd}" in
@@ -45,12 +43,7 @@ function channels() {
 
   case "${channels}" in
     '') return 1 ;;
-    *)
-      case "${mood}" in
-        '') echo "${channels}" ;;
-        *) echo "${channels}" | grep "${mood}" ;;
-      esac
-    ;;
+    *) echo "${channels}" ;;
   esac
 }
 
@@ -59,7 +52,7 @@ function help() {
   local bin=${a[${#a[@]}-1]}
 
   echo 'Usage:'
-  echo "  ${bin} channels [--mood=<state>]"
+  echo "  ${bin} channels"
   echo "  ${bin} listen <channel> [--quality=<low|high|highest>]"
   echo
   echo 'Core Commands:'
