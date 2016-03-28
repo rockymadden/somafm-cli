@@ -47,7 +47,7 @@ Core Commands:
 
 ## Examples and Recipes
 
-### List all channels:
+### List channels:
 
 ```bash
 $ somafm channels
