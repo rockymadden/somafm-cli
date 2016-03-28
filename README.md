@@ -37,7 +37,7 @@ $ make install
 ```bash
 $ somafm --help
 Usage:
-  somafm channels [--mood=<state>]
+  somafm channels
   somafm listen <channel> [--quality=<low|high|highest>]
 
 Core Commands:
