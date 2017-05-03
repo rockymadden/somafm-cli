@@ -3,28 +3,23 @@
 [![versioning](http://img.shields.io/badge/versioning-semver-blue.svg)](http://semver.org/)
 [![branching](http://img.shields.io/badge/branching-github%20flow-blue.svg)](https://guides.github.com/introduction/flow/)
 [![license](http://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
-[![pm](http://img.shields.io/badge/pm-zenhub-blue.svg)](https://www.zenhub.io/)
-[![chat](http://img.shields.io/badge/chat-slack-blue.svg)](https://rockymadden-slack.herokuapp.com/)
 [![circleci](https://circleci.com/gh/rockymadden/somafm-cli.svg?style=shield)](https://circleci.com/gh/rockymadden/somafm-cli)
 
-[![asciicast](https://asciinema.org/a/40541.png)](https://asciinema.org/a/40541)
+```bash
+$ somafm listen groovesalad
+22:27:30 | Mindex - Jagga-jah
+22:31:11 | Fresh Moods - Orfine
+22:33:15 | Dr. Toast - Thunderclap
+```
 
-Be sure to help keep SomaFM commercial-free and on the air with your
-[support](https://somafm.com/support/)! Groove Salad, Drone Zone, Cliqhop, Secret Agent, Space
-Station Soma, Digitalis, PopTron, Suburbs of Goa and Illinois Street Lounge are trademarks of
-SomaFM.com, LLC.
-
-## Installation
-
+## Install
 ### Via Homebrew:
-
 ```bash
 $ brew tap rockymadden/rockymadden
 $ brew install somafm-cli
 ```
 
 ### Via compiling from source:
-
 ```bash
 $ git clone git@github.com:rockymadden/somafm-cli.git
 $ cd somafm-cli
@@ -32,23 +27,34 @@ $ make
 $ make install
 ```
 
-## Usage
-
+## Use
 ```bash
 $ somafm --help
 Usage:
   somafm channels
   somafm listen <channel> [--quality=<low|high|highest>]
+  
+Options:
+  quality  The listening quality (default: high)
 
-Core Commands:
-  channels    List channels
-  listen      Listen to channel
+Commands:
+  channels  List channels
+  listen    Listen to channel
 ```
 
-## Examples and Recipes
+### Listen to Groove Salad:
+```bash
+$ somafm listen groovesalad
+22:27:30 | Mindex - Jagga-jah
+```
+
+### Listen to Groove Salad at highest quality:
+```bash
+$ somafm listen groovesalad --quality=highest
+22:27:30 | Mindex - Jagga-jah
+```
 
 ### List channels:
-
 ```bash
 $ somafm channels
 groovesalad | 1535 listeners | A nicely chilled plate of ambient/downtempo beats and grooves.
@@ -84,20 +90,6 @@ doomed | 22 listeners | Dark industrial/ambient music for tortured souls.
 covers | 18 listeners | Just covers. Songs you know by artists you don't. We've got you covered.
 metal | 14 listeners | NEW! From black to doom, prog to sludge, thrash to post, stoner to crossover, punk to industrial.
 sxfm | 5 listeners | Music from bands who will be performing at SXSW, one of the biggest and best music festivals in the world. [explicit]
-```
-
-### Listen to Groove Salad:
-
-```bash
-$ somafm listen groovesalad
-A: 00:05:19 Cache: 10s+96k
-```
-
-### Listen to Groove Salad at highest quality:
-
-```bash
-$ somafm listen groovesalad --quality=highest
-A: 00:02:25 Cache: 9s+72k
 ```
 
 ## License
