@@ -67,7 +67,7 @@ function listen() {
 
   case "${playlist}" in
     '') return 1 ;;
-    *) mpv "${playlist}" 1> /dev/null ;;
+    *) mpv "${playlist}" 2> /dev/null | awk '/title/ { s = ""; for (i = 2; i <= NF; i++) s = s $i " "; print s }' ;;
   esac
 }
 
