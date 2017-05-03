@@ -55,9 +55,12 @@ function help() {
   echo "  ${bin} channels"
   echo "  ${bin} listen <channel> [--quality=<low|high|highest>]"
   echo
-  echo 'Core Commands:'
-  echo '  channels    List channels'
-  echo '  listen      Listen to channel'
+  echo 'Options:'
+  echo '  quality  The listening quality (default: high)'
+  echo
+  echo 'Commands:'
+  echo '  channels  List channels'
+  echo '  listen    Listen to channel'
 }
 
 function listen() {
