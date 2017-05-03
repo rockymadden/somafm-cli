@@ -5,6 +5,13 @@
 [![license](http://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
 [![circleci](https://circleci.com/gh/rockymadden/somafm-cli.svg?style=shield)](https://circleci.com/gh/rockymadden/somafm-cli)
 
+```bash
+$ somafm listen groovesalad
+High Skies - Burning Buildings
+Electrix - Nightfly
+Mindex - Jagga-jah
+```
+
 ## Install
 ### Via Homebrew:
 ```bash
