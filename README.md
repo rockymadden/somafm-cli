@@ -5,7 +5,7 @@
 [![license](http://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
 [![circleci](https://circleci.com/gh/rockymadden/somafm-cli.svg?style=shield)](https://circleci.com/gh/rockymadden/somafm-cli)
 
-## Installation
+## Install
 ### Via Homebrew:
 ```bash
 $ brew tap rockymadden/rockymadden
@@ -20,7 +20,7 @@ $ make
 $ make install
 ```
 
-## Usage
+## Use
 ```bash
 $ somafm --help
 Usage:
