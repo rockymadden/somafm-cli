@@ -32,7 +32,18 @@ Core Commands:
   listen      Listen to channel
 ```
 
-## Examples and Recipes
+### Listen to Groove Salad:
+```bash
+$ somafm listen groovesalad
+High Skies - Burning Buildings
+```
+
+### Listen to Groove Salad at highest quality:
+```bash
+$ somafm listen groovesalad --quality=highest
+High Skies - Burning Buildings
+```
+
 ### List channels:
 ```bash
 $ somafm channels
@@ -69,18 +80,6 @@ doomed | 22 listeners | Dark industrial/ambient music for tortured souls.
 covers | 18 listeners | Just covers. Songs you know by artists you don't. We've got you covered.
 metal | 14 listeners | NEW! From black to doom, prog to sludge, thrash to post, stoner to crossover, punk to industrial.
 sxfm | 5 listeners | Music from bands who will be performing at SXSW, one of the biggest and best music festivals in the world. [explicit]
-```
-
-### Listen to Groove Salad:
-```bash
-$ somafm listen groovesalad
-High Skies - Burning Buildings
-```
-
-### Listen to Groove Salad at highest quality:
-```bash
-$ somafm listen groovesalad --quality=highest
-High Skies - Burning Buildings
 ```
 
 ## License
