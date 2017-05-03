@@ -7,24 +7,14 @@
 [![chat](http://img.shields.io/badge/chat-slack-blue.svg)](https://rockymadden-slack.herokuapp.com/)
 [![circleci](https://circleci.com/gh/rockymadden/somafm-cli.svg?style=shield)](https://circleci.com/gh/rockymadden/somafm-cli)
 
-[![asciicast](https://asciinema.org/a/40541.png)](https://asciinema.org/a/40541)
-
-Be sure to help keep SomaFM commercial-free and on the air with your
-[support](https://somafm.com/support/)! Groove Salad, Drone Zone, Cliqhop, Secret Agent, Space
-Station Soma, Digitalis, PopTron, Suburbs of Goa and Illinois Street Lounge are trademarks of
-SomaFM.com, LLC.
-
 ## Installation
-
 ### Via Homebrew:
-
 ```bash
 $ brew tap rockymadden/rockymadden
 $ brew install somafm-cli
 ```
 
 ### Via compiling from source:
-
 ```bash
 $ git clone git@github.com:rockymadden/somafm-cli.git
 $ cd somafm-cli
@@ -33,7 +23,6 @@ $ make install
 ```
 
 ## Usage
-
 ```bash
 $ somafm --help
 Usage:
@@ -46,9 +35,7 @@ Core Commands:
 ```
 
 ## Examples and Recipes
-
 ### List channels:
-
 ```bash
 $ somafm channels
 groovesalad | 1535 listeners | A nicely chilled plate of ambient/downtempo beats and grooves.
@@ -87,17 +74,15 @@ sxfm | 5 listeners | Music from bands who will be performing at SXSW, one of the
 ```
 
 ### Listen to Groove Salad:
-
 ```bash
 $ somafm listen groovesalad
-A: 00:05:19 Cache: 10s+96k
+High Skies - Burning Buildings
 ```
 
 ### Listen to Groove Salad at highest quality:
-
 ```bash
 $ somafm listen groovesalad --quality=highest
-A: 00:02:25 Cache: 9s+72k
+High Skies - Burning Buildings
 ```
 
 ## License
