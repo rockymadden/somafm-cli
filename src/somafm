@@ -75,7 +75,7 @@ function listen() {
 }
 
 function version() {
-  echo 'v0.1.0'
+  echo '0.2.0'
 }
 
 ## Command routing ################################################################################
