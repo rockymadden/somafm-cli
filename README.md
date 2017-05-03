@@ -7,9 +7,9 @@
 
 ```bash
 $ somafm listen groovesalad
-High Skies - Burning Buildings
-Electrix - Nightfly
-Mindex - Jagga-jah
+22:27:30 | Mindex - Jagga-jah
+22:31:11 | Fresh Moods - Orfine
+22:33:15 | Dr. Toast - Thunderclap
 ```
 
 ## Install
@@ -45,13 +45,13 @@ Commands:
 ### Listen to Groove Salad:
 ```bash
 $ somafm listen groovesalad
-High Skies - Burning Buildings
+22:27:30 | Mindex - Jagga-jah
 ```
 
 ### Listen to Groove Salad at highest quality:
 ```bash
 $ somafm listen groovesalad --quality=highest
-High Skies - Burning Buildings
+22:27:30 | Mindex - Jagga-jah
 ```
 
 ### List channels:

@@ -70,7 +70,7 @@ function listen() {
 
   case "${playlist}" in
     '') return 1 ;;
-    *) mpv "${playlist}" 2> /dev/null | awk '/title/ { s = ""; for (i = 2; i <= NF; i++) s = s $i " "; print s }' ;;
+    *) mpv "${playlist}" 2> /dev/null | awk '/title/ { s = ""; for (i = 2; i <= NF; i++) s = s $i " "; cmd="(date +'%H:%M:%S')"; cmd | getline d; print d,"|",s; close(cmd) }' ;;
   esac
 }
 
