@@ -26,6 +26,7 @@ $ cd somafm-cli
 $ make
 $ make install
 ```
+> __NOTE:__ Both `jq` and `mpv` are dependencies and without Homebrew you must ensure they are satisfied.
 
 ## Use
 ```console
