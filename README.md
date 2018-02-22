@@ -5,7 +5,7 @@
 [![license](http://img.shields.io/badge/license-mit-blue.svg)](https://opensource.org/licenses/MIT)
 [![circleci](https://circleci.com/gh/rockymadden/somafm-cli.svg?style=shield)](https://circleci.com/gh/rockymadden/somafm-cli)
 
-```bash
+```console
 $ somafm listen groovesalad
 22:27:30 | Mindex - Jagga-jah
 22:31:11 | Fresh Moods - Orfine
@@ -14,13 +14,13 @@ $ somafm listen groovesalad
 
 ## Install
 ### Via Homebrew:
-```bash
+```console
 $ brew tap rockymadden/rockymadden
 $ brew install somafm-cli
 ```
 
 ### Via compiling from source:
-```bash
+```console
 $ git clone git@github.com:rockymadden/somafm-cli.git
 $ cd somafm-cli
 $ make
@@ -28,7 +28,7 @@ $ make install
 ```
 
 ## Use
-```bash
+```console
 $ somafm --help
 Usage:
   somafm channels
@@ -43,19 +43,19 @@ Commands:
 ```
 
 ### Listen to Groove Salad:
-```bash
+```console
 $ somafm listen groovesalad
 22:27:30 | Mindex - Jagga-jah
 ```
 
 ### Listen to Groove Salad at highest quality:
-```bash
+```console
 $ somafm listen groovesalad --quality=highest
 22:27:30 | Mindex - Jagga-jah
 ```
 
 ### List channels:
-```bash
+```console
 $ somafm channels
 groovesalad | 1535 listeners | A nicely chilled plate of ambient/downtempo beats and grooves.
 dronezone | 682 listeners | Served best chilled, safe with most medications. Atmospheric textures with minimal beats.
