@@ -15,8 +15,7 @@ $ somafm listen groovesalad
 ## Install
 ### Via Homebrew:
 ```console
-$ brew tap rockymadden/rockymadden
-$ brew install somafm-cli
+$ brew tap rockymadden/rockymadden/somafm-cli
 ```
 
 ### Via compiling from source:
@@ -97,7 +96,7 @@ sxfm | 5 listeners | Music from bands who will be performing at SXSW, one of the
 ```
 The MIT License (MIT)
 
-Copyright (c) 2016 Rocky Madden (https://rockymadden.com/)
+Copyright (c) 2018 Rocky Madden (https://rockymadden.com/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
