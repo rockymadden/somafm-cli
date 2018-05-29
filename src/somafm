@@ -15,7 +15,7 @@ while (( "$#" )); do
     -q*) quality=${2}; shift; shift ;;
     *)
       case "${cmd}" in
-        listen) test -n "${1}" && test -z "${channel}" && channel=${1} ;;
+        listen|play) test -n "${1}" && test -z "${channel}" && channel=${1} ;;
       esac
       shift
     ;;
@@ -24,12 +24,12 @@ done
 
 ## Default arguments and options ##################################################################
 case "${cmd}" in
-  listen) test -z "${quality}" && quality=high ;;
+  listen|play) test -z "${quality}" && quality=high ;;
 esac
 
 ## Argument and option prompting ##################################################################
 case "${cmd}" in
-  listen)
+  listen|play)
     test -z "${channel}" && \
       read -e -p 'Enter channel (e.g. groovesalad, defcon, poptron): ' channel
   ;;
