@@ -34,13 +34,13 @@ $ somafm --help
 Usage:
   somafm channels
   somafm listen <channel> [--quality=<low|high|highest>]
-  
+
 Options:
-  quality  The listening quality (default: high)
+  quality    The listening quality (default: high)
 
 Commands:
-  channels  List channels
-  listen    Listen to channel
+  channels|list|ls    List channels
+  listen|play         Listen to channel
 ```
 
 ### Listen to Groove Salad:

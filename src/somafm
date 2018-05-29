@@ -37,7 +37,7 @@ esac
 
 ## Command functions ##############################################################################
 function channels() {
-  local channels=$(curl -s -H 'Accept: application/json' http://somafm.com/channels.json | \
+  local channels=$(curl -s -H 'Accept: application/json' https://somafm.com/channels.json | \
     jq -r '.channels | sort_by(.listeners | tonumber) | reverse | .[]' | \
     jq -r '.id + " | " + .listeners + " listeners | " + .description')
 
@@ -56,21 +56,21 @@ function help() {
   echo "  ${bin} listen <channel> [--quality=<low|high|highest>]"
   echo
   echo 'Options:'
-  echo '  quality  The listening quality (default: high)'
+  echo '  quality    The listening quality (default: high)'
   echo
   echo 'Commands:'
-  echo '  channels  List channels'
-  echo '  listen    Listen to channel'
+  echo '  channels|list|ls    List channels'
+  echo '  listen|play         Listen to channel'
 }
 
 function listen() {
-  local playlist=$(curl -s -H 'Accept: application/json' http://somafm.com/channels.json | \
+  local playlist=$(curl -s -H 'Accept: application/json' https://somafm.com/channels.json | \
     jq -r ".channels | map(select(.id == \"${channel}\")) | .[]" | \
     jq -r ".playlists | map(select(.quality == \"${quality}\")) | limit(1;.[]) | .url")
 
   case "${playlist}" in
     '') return 1 ;;
-    *) mpv "${playlist}" 2> /dev/null | awk '/title/ { s = ""; for (i = 2; i <= NF; i++) s = s $i " "; cmd="(date +'%H:%M:%S')"; cmd | getline d; print d,"|",s; close(cmd) }' ;;
+    *) mpv --no-config "${playlist}" 2> /dev/null | awk '/title/ { s = ""; for (i = 2; i <= NF; i++) s = s $i " "; cmd="(date +'%H:%M:%S')"; cmd | getline d; print d,"|",s; close(cmd) }' ;;
   esac
 }
 
@@ -82,6 +82,7 @@ function version() {
 case "${cmd}" in
   --help|-h) help; exit 0 ;;
   --version|-v) version; exit 0 ;;
-  channels|listen) "${cmd}"; exit "$?" ;;
+  channels|list|ls) channels; exit "$?" ;;
+  listen|play) listen; exit "$?" ;;
   *) help; exit 1 ;;
 esac
