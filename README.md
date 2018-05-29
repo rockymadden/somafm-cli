@@ -16,6 +16,7 @@ $ somafm listen groovesalad
 ## Install
 ### Via Homebrew:
 ```console
+$ brew tap rockymadden/rockymadden
 $ brew install rockymadden/rockymadden/somafm-cli
 ```
 
