@@ -50,6 +50,13 @@ $ somafm listen groovesalad
 22:27:30 | Mindex - Jagga-jah
 ```
 
+You don't have to write the whole channel name, the first letters are enough.
+
+```console
+$ somafm listen groov
+22:27:30 | Mindex - Jagga-jah
+```
+
 ### Listen to Groove Salad at highest quality:
 ```console
 $ somafm listen groovesalad --quality=highest
