@@ -65,7 +65,7 @@ function help() {
 
 function listen() {
   local playlist=$(curl -s -H 'Accept: application/json' https://somafm.com/channels.json | \
-    jq -r ".channels | map(select(.id == \"${channel}\")) | .[]" | \
+    jq -r ".channels | map(select( (.id == \"${channel}\") or (.id | test(\"^${channel}\")) )) | limit(1;.[])" | \
     jq -r ".playlists | map(select(.quality == \"${quality}\")) | limit(1;.[]) | .url")
 
   case "${playlist}" in
