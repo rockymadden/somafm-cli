@@ -1,0 +1,9 @@
+set timeout 5
+spawn soma trance
+match_max 100000
+expect -- "The Trip" {
+  send_user "test passed\n"
+  exit 0
+}
+send_user "test failed\n"
+exit 1

@@ -1,0 +1,9 @@
+set timeout 5
+spawn soma will not match
+match_max 100000
+expect -- "no channels found matching the search terms" {
+  send_user "test passed\n"
+  exit 0
+}
+send_user "test failed\n"
+exit 1

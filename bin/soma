@@ -15,7 +15,7 @@
 set -o nounset
 
 # script details
-VERSION='0.4.0'
+VERSION='0.4.1'
 SCRIPT_NAME=$(basename "$0")
 
 # defaults and magic vars
@@ -31,15 +31,6 @@ DEBUG_FILE='soma.debug.log'
 QUALITY='high'
 
 # fzf options that control the look and feel but not the operation of it
-FZF_DEFAULT_OPTS='
-  -i
-  --exact
-  --layout=reverse
-  --no-hscroll
-  --no-sort
-  --pointer="※"
-  --prompt="soma ❯ "
-'
 
 # shorthand for echo with interpretation of backslash escapes
 function o() {
@@ -141,7 +132,6 @@ debug 'debug enabled'     "${DEBUG}"
 debug "quality"           "${QUALITY}"
 debug "color enabled"     "${COLOR}"
 debug "fzf query"         "${FZF_QUERY[*]}"
-debug "fzf ops"           "${FZF_DEFAULT_OPTS}"
 debug "color0"            "$(color_code ${COLOR0})########-----------$(color_code ${COLOR_RESET})"
 debug "color1"            "$(color_code ${COLOR1})########-----------$(color_code ${COLOR_RESET})"
 debug "color2"            "$(color_code ${COLOR2})########-----------$(color_code ${COLOR_RESET})"
@@ -171,10 +161,17 @@ while [[ $RET_CODE -eq "77" ]] ; do
     jq -r '.id+"\t"+.title+"\t"+.description'            | \
     fzf                          \
       -d '\t'                    \
-      --tabstop=26               \
+      -i                         \
+      --exact                    \
+      --exit-0                   \
+      --layout=reverse           \
+      --no-hscroll               \
+      --no-sort                  \
+      --pointer="※"              \
+      --prompt="soma ❯ "         \
       --query="${FZF_QUERY[*]}"  \
       --select-1                 \
-      --exit-0                   \
+      --tabstop=26               \
       --with-nth=2,3             \
       | awk '{print $1}'
   )
@@ -191,7 +188,7 @@ while [[ $RET_CODE -eq "77" ]] ; do
 
   case "${playlist}" in
     '')
-      o 'ERR: no matches found'
+      o 'no channels found matching the search terms'
       exit 1
       ;;
 

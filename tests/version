@@ -1,0 +1,9 @@
+set timeout 5
+spawn soma --version
+match_max 100000
+expect -- "soma-wrapped version" {
+  send_user "test passed\n"
+  exit 0
+}
+send_user "test failed\n"
+exit 1

@@ -1,14 +1,17 @@
-name: "nix-soma-version"
+name: "soma-tests"
 on:
   pull_request:
   push:
 jobs:
-  nix-soma-version:
+  soma-test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1.2.0
-    - uses: cachix/install-nix-action@v15
-      with:
-        nix_path: nixpkgs=channel:nixos-unstable
-    - run: nix-env -i soma -f default.nix
-    - run: soma --version
+
+    # use docker to get around the lack for TTY for fzf and mpv
+    - run: docker build . -t test
+
+    - run: docker run -t test expect /soma/tests/no_matches_found
+    - run: docker run -t test expect /soma/tests/trance
+    - run: docker run -t test expect /soma/tests/version
+    - run: docker run -t test expect /soma/tests/version_short
