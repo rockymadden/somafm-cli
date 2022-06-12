@@ -1,5 +1,4 @@
 FROM nixos/nix
-
 RUN nix-channel --update
-
-RUN nix-build -A pythonFull '<nixpkgs>'
+COPY . /soma
+RUN cd /soma; nix-env -f default.nix -i

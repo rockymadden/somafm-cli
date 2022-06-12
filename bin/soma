@@ -31,15 +31,7 @@ DEBUG_FILE='soma.debug.log'
 QUALITY='high'
 
 # fzf options that control the look and feel but not the operation of it
-FZF_DEFAULT_OPTS='
-  -i
-  --exact
-  --layout=reverse
-  --no-hscroll
-  --no-sort
-  --pointer="※"
-  --prompt="soma ❯ "
-'
+FZF_DEFAULT_OPTS='-i --exact  --layout=reverse  --no-hscroll  --no-sort  --pointer="※"  --prompt="soma ❯ "'
 
 # shorthand for echo with interpretation of backslash escapes
 function o() {
