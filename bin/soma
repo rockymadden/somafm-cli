@@ -1,0 +1,213 @@
+#!/usr/bin/env bash
+
+# soma by Nelson Jeppesen <jeppesen.io>
+#
+#   listen to somafm from the terminal
+#
+#  requirements:
+#     awk
+#     bash
+#     curl
+#     jq
+#     mpv
+
+# exit when script uses undeclared variables
+set -o nounset
+
+# script details
+VERSION='0.4.0'
+SCRIPT_NAME=$(basename "$0")
+
+# defaults and magic vars
+B="\033[3m\033[1m"  # bold
+N="\033[0m"         # normal
+COLOR0='35'
+COLOR1='34'
+COLOR2='36'
+COLOR=true
+COLOR_RESET='0'
+DEBUG=false
+DEBUG_FILE='soma.debug.log'
+QUALITY='high'
+
+# fzf options that control the look and feel but not the operation of it
+FZF_DEFAULT_OPTS='
+  -i
+  --exact
+  --layout=reverse
+  --no-hscroll
+  --no-sort
+  --pointer="※"
+  --prompt="soma ❯ "
+'
+
+# shorthand for echo with interpretation of backslash escapes
+function o() {
+  echo -e "${1}"
+}
+
+# debug helper
+function debug() {
+  if $DEBUG; then
+    echo "[debug] ${1} to ${DEBUG_FILE}"
+    echo "[debug] ${1}: ${2}"
+    #>> ${DEBUG_FILE}
+  fi
+}
+
+# color escape helper
+function color_code() {
+  if $COLOR; then
+    echo -e "\033[${1}m"
+  fi
+}
+
+# parse the CLI arguments, in any order
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    -\?|-h|--help)
+      o "                                                                                "
+      o "Usage:                                                                          "
+      o "  ${SCRIPT_NAME} [options] [fuzzy filter]                                       "
+      o "                                                                                "
+      o "  e.g. ${SCRIPT_NAME} --quality=highest deep space                              "
+      o "                                                                                "
+      o "Fuzzy Filter                                                                    "
+      o "  Optional: if not given, a menu will be presented                              "
+      o "                                                                                "
+      o "  Enter term or terms to match one or more stations                             "
+      o "                                                                                "
+      o "  For example, the fuzzy filter ${B}chill nicely${N} would match the channels   "
+      o "  ${B}Groove Salad${N} and ${B}Groove Salad Classic${N} because each term is in the"
+      o "  station title of each channel                                                 "
+      o "                                                                                "
+      o "  If a fuzzy filter matches a single station, that station will started         "
+      o "  If a fuzzy filter matches more than one station, a menu will be presented     "
+      o "                                                                                "
+      o "Options:                                                                        "
+      o "  --quality=QUALITY, -q QUALITY   default: high [low|high|highest]              "
+      o "  -c, --no-color                  disable color                                 "
+      o "  -v, --version                   print version                                 "
+      o "  -d, --debug                     enable debug mode                             "
+      exit 0
+      ;;
+
+    --version|-v)
+      o "${SCRIPT_NAME} version ${VERSION}"
+      exit 0
+      ;;
+
+    --driver=*)
+      DRIVER=${1/--driver=/''}
+      shift
+      ;;
+
+    --quality=*)
+      QUALITY=${1/--quality=/''}
+      shift
+      ;;
+
+    -q*)
+      QUALITY=${2}
+      shift
+      shift
+      ;;
+
+    --no-color|-c)
+      COLOR=false
+      shift
+      ;;
+
+    --debug|-d)
+      DEBUG=true
+      shift
+      ;;
+
+    *)
+      # all cli options mot matched are passed to fzf as default query
+      FZF_QUERY+=("$1")
+      shift
+  esac
+done
+
+# TBH I don't know what this does; copypasta
+set -- "${FZF_QUERY[@]}"
+
+# write the name of the script in bold color1
+echo -e "${B}$(color_code ${COLOR1})${SCRIPT_NAME}${N}"
+
+# various debug settings to write to a file if --debug/-d is enabled
+debug 'debug enabled'     "${DEBUG}"
+debug "quality"           "${QUALITY}"
+debug "color enabled"     "${COLOR}"
+debug "fzf query"         "${FZF_QUERY[*]}"
+debug "fzf ops"           "${FZF_DEFAULT_OPTS}"
+debug "color0"            "$(color_code ${COLOR0})########-----------$(color_code ${COLOR_RESET})"
+debug "color1"            "$(color_code ${COLOR1})########-----------$(color_code ${COLOR_RESET})"
+debug "color2"            "$(color_code ${COLOR2})########-----------$(color_code ${COLOR_RESET})"
+
+# pull somafm channel list with all the metadata. Used by fzf to slection the
+# to play with mpv
+CHANNEL_LIST=$(curl -s -H 'Accept: application/json' https://somafm.com/channels.json)
+debug "channel_list" "${CHANNEL_LIST}"
+
+echo -e "$(color_code ${COLOR2})―――――――――――――――――――$(color_code ${COLOR_RESET})"
+echo 'q to quit'
+echo 'c to change channel'
+
+# start the main loop
+#
+# bootstrap with exit code of 77 which is returned from mpv when "c" is pressed
+# to change the channel
+RET_CODE="77"
+while [[ $RET_CODE -eq "77" ]] ; do
+  echo -e "$(color_code ${COLOR2})―――――――――――――――――――$(color_code ${COLOR_RESET})"
+  RET_CODE="0"
+
+  # show channels piped into fzf for fuzzy finding
+  CHANNEL=$(
+    echo "${CHANNEL_LIST}"                               | \
+    jq -r '.channels|sort_by(.title|ascii_downcase)|.[]' | \
+    jq -r '.id+"\t"+.title+"\t"+.description'            | \
+    fzf                          \
+      -d '\t'                    \
+      --tabstop=26               \
+      --query="${FZF_QUERY[*]}"  \
+      --select-1                 \
+      --exit-0                   \
+      --with-nth=2,3             \
+      | awk '{print $1}'
+  )
+  debug 'channel' "${CHANNEL}"
+
+  # match the channel id to the http endpoint
+  playlist=$(
+    echo "${CHANNEL_LIST}"                                                          | \
+    jq -r ".channels|map(select(.id==\"${CHANNEL}\")) | .[]"                        | \
+    jq -r ".playlists|map(select(.quality==\"${QUALITY}\")) | limit(1;.[]) | .url"
+  )
+
+  debug "playlist" "${playlist}"
+
+  case "${playlist}" in
+    '')
+      o 'ERR: no matches found'
+      exit 1
+      ;;
+
+    *)
+      mpv \
+        --no-config                                 \
+        --input-default-bindings=no                 \
+        --msg-level=all=no,soma=status              \
+        --script="$(dirname "$0")/../lib/soma.lua"  \
+        --script-opts="soma-color=${COLOR},soma-color0=${COLOR0},soma-color1=${COLOR1},soma-color2=${COLOR2}" \
+        "${playlist}"
+      RET_CODE=$?
+      debug "mpv return code" "${RET_CODE}"
+      ;;
+  esac
+
+  # reset arguments sent to fzf if return code 77 is sent for a change channel
+  FZF_QUERY=("")
+done
