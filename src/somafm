@@ -39,7 +39,8 @@ esac
 function channels() {
   local channels=$(curl -s -H 'Accept: application/json' https://somafm.com/channels.json | \
     jq -r '.channels | sort_by(.listeners | tonumber) | reverse | .[]' | \
-    jq -r '.id + " | " + .listeners + " listeners | " + .description')
+    jq -r '.id + "|" + .listeners + " listeners|" + .description' | \
+    column -t -s\|)
 
   case "${channels}" in
     '') return 1 ;;
@@ -75,7 +76,7 @@ function listen() {
 }
 
 function version() {
-  echo '0.3.1'
+  echo '0.4.0'
 }
 
 ## Command routing ################################################################################
