@@ -9,5 +9,5 @@ jobs:
       - name: install shellcheck
         run: sudo apt-get install -y shellcheck
       - name: doshellcheck
-        run: shellcheck -V && shellcheck src/*.sh && echo "shellcheck OK"
+        run: shellcheck -V && shellcheck src/somafm && echo "shellcheck OK"
 
